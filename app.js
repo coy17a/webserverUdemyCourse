@@ -1,6 +1,8 @@
 const express =require('express')
 const hbs = require('hbs');
-const fs = require('fs')
+const fs = require('fs');
+
+const port = process.env.PORT || 3000;
 
 var app = express();
 hbs.registerPartials(__dirname+'/views/partials')
@@ -19,9 +21,9 @@ app.use((req,res,next)=>{
     next();
 });
 // maintanence page middleware
-app.use((req,res,next)=>{
-    res.render('maintenance.hbs')
-});
+// app.use((req,res,next)=>{
+//     res.render('maintenance.hbs')
+// });
 // order of the app use it is important! 
 app.use(express.static(__dirname+'/public'));
 hbs.registerHelper('getCurrentYear', ()=>{
@@ -53,7 +55,10 @@ app.get('/bad', (req,res)=>{
     })
 });
 
-app.listen(3000, ()=> {
-    console.log('Serve started in port 3000')
-});
+// app.listen(3000, ()=> {
+//     console.log('Serve started in port 3000')
+// });
 
+app.listen(port, ()=>{
+console.log(`Server is up on prot ${port}`)
+});
