@@ -48,13 +48,15 @@ app.get('/about',(req,res)=>{
    
     });
 });
-
 app.get('/bad', (req,res)=>{
     res.send({
         errorMessage: "Something went wrong!"
     })
 });
 
+app.get('/projects', (req,res)=>{
+    res.render('projects.hbs')
+});
 // app.listen(3000, ()=> {
 //     console.log('Serve started in port 3000')
 // });
