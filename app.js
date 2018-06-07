@@ -12,7 +12,6 @@ app.set('view engine', 'hbs');
 app.use((req,res,next)=>{
     var now = new Date().toString();
     var log= `${now}: ${req.method} ${req.url}`;
-    console.log(log);
     fs.appendFile('server.log', log +'\n', (err)=>{
         if(err){
             console.log('Unable to append to server.log')
@@ -55,7 +54,9 @@ app.get('/bad', (req,res)=>{
 });
 
 app.get('/projects', (req,res)=>{
-    res.render('projects.hbs')
+    res.render('projects.hbs', {
+        pageTitle:"Projects"
+    })
 });
 // app.listen(3000, ()=> {
 //     console.log('Serve started in port 3000')
